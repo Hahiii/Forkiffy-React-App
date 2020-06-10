@@ -1,20 +1,26 @@
 import React from 'react';
 import axios from "axios"
 
+
+
 import SearchBox from "./components/search"
 import RecipeList from "./components/recipeList"
 import Recipe from "./components/recipe"
+import ShoppingList from "./components/shoppingList"
+
 
 class App extends React.Component {
     constructor() {
         super()
         this.state = {
             recipes: [],
-            selectedRecipe: ""
+            selectedRecipe: "",
+            ingredients: ""
 
 
         }
     }
+
 
     componentDidMount = () => {
         this.onSearchSubmit()
@@ -34,16 +40,27 @@ class App extends React.Component {
     }
 
     onRecipeSelected = (recipe) => {
-        console.log("recipe", recipe);
+        // console.log("recipe", recipe);
         this.setState({
             selectedRecipe: recipe.recipe
         })
 
     }
 
+    onIngredientsSelected = (ingredients) => {
+        // console.log("onIngredientsSelected");
+        // console.log("ingredients", ingredients);
+        this.setState({
+            ingredients: ingredients
+        })
+
+    }
+
     render () {
+
         return (
           <div className="App">
+
           <div className="container">
             <header className="header">
               <h1 className="header__logo">Forkiffy</h1>
@@ -69,9 +86,15 @@ class App extends React.Component {
             onRecipeSelected={(recipe) => this.onRecipeSelected(recipe)}/>
             <div className="recipe">
             <Recipe
+            onIngredientsSelected ={(ingredients) => this.onIngredientsSelected(ingredients)}
             selectedRecipe={this.state.selectedRecipe}/>
             </div>
+            <div className="shopping">
+            <h2 class="heading-2">My Shopping List</h2>
+            <ShoppingList ingredients={this.state.ingredients}/>
             </div>
+            </div>
+        
           </div>
         );
     }

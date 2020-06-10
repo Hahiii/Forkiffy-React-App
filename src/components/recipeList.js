@@ -23,14 +23,14 @@ return title
 
 
 return (
-    <div class="results">
-        <ul class="results__list">
+    <div className="results">
+        <ul className="results__list">
     <li >
 
     {recipes.map(recipe => {
         return (
             <div key={recipe.recipe.label}>
-            <div onClick={() => onRecipeSelected(recipe)} class="results__link">
+            <div onClick={() => onRecipeSelected(recipe)} className="results__link">
             <div className="results__fig">
             <img src={recipe.recipe.image}/>
             </div>

@@ -19,7 +19,7 @@ class SearchBox extends React.Component {
 
 
     onFormSubmit = (e) => {
-        if (this.state.searchTerm === "") return;
+        if (!this.state.searchTerm) return;
         e.preventDefault()
         this.props.onSubmit(this.state.searchTerm)
         this.setState({

@@ -1,6 +1,6 @@
 .results {
   padding: 3rem 0;
-  padding-left: 2rem;
+  /* padding-left: 2rem; */
 }
 
 .results__list {
@@ -11,6 +11,7 @@
   display: flex;
   margin: 20px;
   cursor: pointer;
+  padding: 20px;
 }
 .results__link:link,
 .results__link:visited {

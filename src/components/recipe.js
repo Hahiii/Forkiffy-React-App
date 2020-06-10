@@ -1,11 +1,41 @@
 import React from "react"
 
+import uniqid from "uniqid";
+
+
+
 import "./recipe.css"
 
 
-const Recipe = ({selectedRecipe}) => {
+const Recipe = ({selectedRecipe, onIngredientsSelected}) => {
 
-    console.log(selectedRecipe);
+    let selectedRecipeArray = []
+    for (let keys in selectedRecipe.ingredientLines) {
+        selectedRecipeArray[keys] = selectedRecipe.ingredientLines[keys]
+
+    }
+
+    let healthLabels = []
+    for (let keys in selectedRecipe.healthLabels) {
+        healthLabels[keys] = selectedRecipe.healthLabels[keys]
+
+    }
+
+
+    let addIngredients =  () => {
+    const item = {
+        ingredients: selectedRecipeArray.map(ingredient => {
+            return ingredient = {
+                 ingredient : ingredient,
+                 id : uniqid()
+            }
+        })
+    }
+
+    return item.ingredients
+ }
+
+
 
 
 return (
@@ -18,80 +48,67 @@ return (
     </div>
     <div className="recipe__details">
         <div class="recipe__info">
-            <svg class="recipe__info-icon">
+            <svg className="recipe__info-icon">
                 <use href="img/icons.svg#icon-stopwatch"></use>
             </svg>
-            <span class="recipe__info-data recipe__info-data--minutes">{selectedRecipe.totalTime}</span>
-            <span class="recipe__info-text"> minutes</span>
+            <span className="recipe__info-data recipe__info-data--minutes">{healthLabels.map(healthLabel => {
+                return (
+                    <div>
+                    {healthLabel}
+                    </div>
+                )
+            })}</span>
+
         </div>
 
-        <div class="recipe__info">
-            <svg class="recipe__info-icon">
+        <div className="recipe__info">
+            <svg className="recipe__info-icon">
                 <use href="img/icons.svg#icon-man"></use>
             </svg>
-            <span class="recipe__info-data recipe__info-data--people">{selectedRecipe.yield}</span>
-            <span class="recipe__info-text"> servings</span>
-            <div class="recipe__info-buttons">
-                <button class="btn-tiny btn-increase">
-                    <svg>
-                        <h3>+</h3>
-                    </svg>
-                </button>
-
+            <span className="recipe__info-data recipe__info-data--people">{selectedRecipe.yield}</span>
+            <span className="recipe__info-text"> servings</span>
+            <div className="recipe__info-buttons">
             </div>
         </div>
-        <button class="recipe__love">
-            <svg>
-
-
-                <h2 class="header__likes" >LIKE</h2>
-            </svg>
+        <button className="recipe__love">
+            <div>
+                <h2 className="header__likes">LIKE</h2>
+            </div>
         </button>
     </div>
-
+    <div className="recipe__ingredients">
+    <ul className="recipe__ingredient-list">
+    {selectedRecipeArray.map(ingredients => {
+        return (
+            <li className="recipe__item">
+    <svg className="recipe__icon">
+        <use href="img/icons.svg#icon-check"></use>
+    </svg>
+    <div className="recipe__count"></div>
+    <div className="recipe__ingredient">
+        <span className="recipe__unit">{ingredients}</span>
 
     </div>
-    // <div className="recipe__details">
-    //     <div class="recipe__info">
-    //         <svg class="recipe__info-icon">
-    //             <use href="img/icons.svg#icon-stopwatch"></use>
-    //         </svg>
-    //         <span class="recipe__info-data recipe__info-data--minutes">${
-    //           recipe.time
-    //         }</span>
-    //         <span class="recipe__info-text"> minutes</span>
-    //     </div>
+</li>
+        )
+    })}
+    </ul>
 
-    //     <div class="recipe__info">
-    //         <svg class="recipe__info-icon">
-    //             <use href="img/icons.svg#icon-man"></use>
-    //         </svg>
-    //         <span class="recipe__info-data recipe__info-data--people">${
-    //           recipe.servings
-    //         }</span>
-    //         <span class="recipe__info-text"> servings</span>
-    //         <div class="recipe__info-buttons">
-    //             <button class="btn-tiny btn-increase">
-    //                 <svg>
-    //                     <h3>+</h3>
-    //                 </svg>
-    //             </button>
-    //             <button class="btn-tiny btn-decrease">
-    //                 <svg>
-    //                     <h3>-<h3>
-    //                 </svg>
-    //             </button>
-    //         </div>
-    //     </div>
-    //     // <button class="recipe__love">
-    //     //     <svg>
-    //     //
-    //     //
-    //     //         <h2 class="header__likes" >LIKE</h2>
-    //     //     </svg>
-    //     // </button>
-    // </div>
+    <button onClick={(item) => onIngredientsSelected(addIngredients(item))} className="btn-small recipe__btn--add">
+        <span>Add to shopping list</span>
+    </button>
+</div>
+<div className="recipe__directions">
+    <h2 className="heading-2">How to cook it</h2>
+    <p className="recipe__directions-text">
+        Please check out directions at their website.
+    </p>
+    <a className="btn-small recipe__btn" href={selectedRecipe.url} target="_blank">
+        <span >Directions</span>
+    </a>
+</div>
 
+    </div>
 
 )
 
