@@ -5,7 +5,7 @@ import App from './App';
 
 let elem = <Auth />;
 
-if (window.location.pathname === "/auth") {
+if (window.location.pathname === "/") {
     elem = <Auth />;
 } else {
     elem = (

@@ -36,7 +36,7 @@ small,
   height: 75%;
   width: 100%;
   display: flex;
-  /* flex-direction: column-reverse; */
+
   justify-content: center;
   align-items: center;
 
@@ -54,7 +54,7 @@ small,
   /* box-shadow: 0px 10px 50px white; */
 }
 
-form {
+/* form {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -64,7 +64,6 @@ h1 {
   width: 100%;
   color: white;
   font-weight: lighter;
-  /* font-family: "Muli", sans-serif; */
 }
 
 label {
@@ -90,9 +89,9 @@ input::placeholder {
 }
 .lastname {
   margin-left: 1%;
-}
+} */
 
-.firstname,
+/* .firstname,
 .lastname,
 .password,
 .email {
@@ -135,4 +134,4 @@ button {
   color: black;
   background-color: white;
   border: 2px solid white;
-}
+} */

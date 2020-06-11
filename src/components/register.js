@@ -17,15 +17,19 @@ export default class Register extends React.Component {
     }
 
 
-    onSubmit = e => {
+    onSubmit = (e) => {
         e.preventDefault();
-        this.setState({
+
+        axios.post("/register", {
             first: this.state.first,
             last: this.state.last,
             email: this.state.email,
             password: this.state.password
+        }).then(data => {
+            console.log("data in registration", data);
         })
-        console.log("this.state", this.state);
+        console.log(this.state);
+
     }
 
 
@@ -86,7 +90,7 @@ export default class Register extends React.Component {
                         <div className="createAccount">
                             <button
 
-                                onClick={this.onSubmit}
+                                onClick={e => this.onSubmit(e)}
                             >
                                 Submit
                             </button>

@@ -47,7 +47,7 @@ return (
         </h1>
     </div>
     <div className="recipe__details">
-        <div class="recipe__info">
+        <div className="recipe__info">
             <svg className="recipe__info-icon">
                 <use href="img/icons.svg#icon-stopwatch"></use>
             </svg>
